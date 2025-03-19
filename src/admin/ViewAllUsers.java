@@ -12,6 +12,16 @@ public class ViewAllUsers extends JFrame {
     private JScrollPane scrollPane;
     private JFrame parentFrame;
 
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
     public ViewAllUsers(JFrame parentFrame) {
         this.parentFrame = parentFrame;
 
@@ -85,9 +95,9 @@ public class ViewAllUsers extends JFrame {
     }
 
     private void fetchUsersFromDatabase(List<User> admins, List<User> employees) {
-        String url = "jdbc:mysql://localhost:3306/hotel";
+        String url = "jdbc:mysql://127.0.0.1:3306/hotel";
         String user = "root";
-        String password = "AandromedaNnebula11";
+        String password = "11211810jr";
 
         // Query to fetch from both admins and employees
         String query = "SELECT username, 'admin' AS role FROM admins " +

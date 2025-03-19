@@ -18,6 +18,16 @@ public class GuestList extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
     public GuestList() {
         setBackground(new Color(3, 91, 150));
         setBounds(100, 100, 1500, 586);
@@ -70,8 +80,7 @@ public class GuestList extends JPanel {
         panel_1.setBounds(0, 0, 1239, 429);
         panel.add(panel_1);
 
-        ImageIcon logoIcon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/navbar.png");
-        JLabel logoLabel = new JLabel(logoIcon);
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/resources/ImageIcon/navbar.png"));        JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(10, 14, 300, 76);
         add(logoLabel); 
 
@@ -95,9 +104,9 @@ public class GuestList extends JPanel {
     }
 
     private void fetchData(JTable table) {
-        String url = "jdbc:mysql://localhost:3306/hotel"; 
+        String url = "jdbc:mysql://127.0.0.1:3306/hotel";
         String user = "root"; 
-        String password = "AandromedaNnebula11"; 
+        String password = "11211810jr";
         String query = "SELECT * FROM guests";
 
         try (Connection connection = DriverManager.getConnection(url, user, password);

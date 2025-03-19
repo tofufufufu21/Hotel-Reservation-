@@ -9,6 +9,16 @@ public class RoomListAdmin {
 
     private static DefaultTableModel tableModel;
 
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(RoomListAdmin::createAndShowGUI);
     }
@@ -92,7 +102,7 @@ public class RoomListAdmin {
     private static void loadData() {
         tableModel.setRowCount(0); // Clear the table
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/hotel", "root", "AandromedaNnebula11")) {
+                "jdbc:mysql://127.0.0.1:3306/hotel", "root", "11211810jr")) {
 
             String query = "SELECT r.Id, rt.RoomName, r.CheckIn, r.CheckOut, r.Availability " +
                            "FROM rooms r " +
@@ -131,7 +141,7 @@ public class RoomListAdmin {
         int option = JOptionPane.showConfirmDialog(null, message, "Add Room", JOptionPane.OK_CANCEL_OPTION);
         if (option == JOptionPane.OK_OPTION) {
             try (Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/hotel", "root", "AandromedaNnebula11")) {
+                    "jdbc:mysql://127.0.0.1:3306/hotel", "root", "11211810jr")) {
 
                 String query = "INSERT INTO rooms (RoomTypeId, CheckIn, CheckOut, Availability) " +
                                "VALUES ((SELECT Id FROM room_types WHERE RoomName = ?), ?, ?, ?)";
@@ -173,7 +183,7 @@ public class RoomListAdmin {
             int option = JOptionPane.showConfirmDialog(null, message, "Edit Room", JOptionPane.OK_CANCEL_OPTION);
             if (option == JOptionPane.OK_OPTION) {
                 try (Connection conn = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/hotel", "root", "AandromedaNnebula11")) {
+                        "jdbc:mysql://127.0.0.1:3306/hotel", "root", "11211810jr")) {
 
                     String query = "UPDATE rooms SET RoomTypeId = (SELECT Id FROM room_types WHERE RoomName = ?), " +
                                    "CheckIn = ?, CheckOut = ?, Availability = ? WHERE Id = ?";
@@ -200,7 +210,7 @@ public class RoomListAdmin {
         if (rowIndex >= 0) {
             int id = (int) tableModel.getValueAt(rowIndex, 0);
             try (Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/hotel", "root", "AandromedaNnebula11")) {
+                    "jdbc:mysql://127.0.0.1:3306/hotel", "root", "11211810jr")) {
 
                 String query = "DELETE FROM rooms WHERE Id = ?";
                 PreparedStatement stmt = conn.prepareStatement(query);

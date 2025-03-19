@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
+import main.AuroraCoveLandingPage;
 import main.TransacHistory;
 import manager.UserLoginUI;
 
@@ -53,7 +54,7 @@ public class AdminDashboard extends JFrame {
         leftPanel.setLayout(null);
         contentPane.add(leftPanel);
 
-        ImageIcon logoIcon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/navbar.png");
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/ImageIcon/navbar.png"));
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(0, 0, 300, 76);
         contentPane.add(logoLabel);
@@ -78,7 +79,7 @@ public class AdminDashboard extends JFrame {
 
         JButton btnNewButton = new JButton("");
         btnNewButton.setBackground(new Color(3, 91, 150));
-        ImageIcon button1Icon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/Booked.png");
+        ImageIcon button1Icon = new ImageIcon(getClass().getResource("/ImageIcon/Booked.png"));
         btnNewButton.setIcon(new ImageIcon(button1Icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
         btnNewButton.setBounds(30, 26, 265, 664);
         btnNewButton.addActionListener(new ActionListener() {
@@ -94,7 +95,8 @@ public class AdminDashboard extends JFrame {
         // Button 2 with image (GuestList redirection)
         JButton btnGuestList = new JButton("");
         btnGuestList.setBackground(new Color(3, 91, 150));
-        ImageIcon button2Icon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/Guest.png");
+
+        ImageIcon button2Icon = new ImageIcon(getClass().getResource("/ImageIcon/Guest.png"));
         btnGuestList.setIcon(new ImageIcon(button2Icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
         btnGuestList.setBounds(332, 26, 265, 664);
         btnGuestList.addActionListener(new ActionListener() {
@@ -110,7 +112,7 @@ public class AdminDashboard extends JFrame {
         // Button 3 with image (RoomListAdmin redirection)
         JButton btnRoomListAdmin = new JButton("");
         btnRoomListAdmin.setBackground(new Color(3, 91, 150));
-        ImageIcon button3Icon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/hotel.png");
+        ImageIcon button3Icon = new ImageIcon(getClass().getResource("/ImageIcon/hotel.png"));
         btnRoomListAdmin.setIcon(new ImageIcon(button3Icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
         btnRoomListAdmin.setBounds(643, 26, 265, 320);
         btnRoomListAdmin.addActionListener(new ActionListener() {
@@ -125,7 +127,7 @@ public class AdminDashboard extends JFrame {
 
         JButton btnNewButton_1_1_1 = new JButton("");
         btnNewButton_1_1_1.setBackground(new Color(3, 91, 150));
-        ImageIcon button4Icon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/settings.png");
+        ImageIcon button4Icon = new ImageIcon(getClass().getResource("/ImageIcon/settings.png"));
         btnNewButton_1_1_1.setIcon(new ImageIcon(button4Icon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
         btnNewButton_1_1_1.setBounds(643, 370, 265, 320);
 
@@ -133,6 +135,7 @@ public class AdminDashboard extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 UserManagementOptions userManagementOptions = new UserManagementOptions(AdminDashboard.this);
                 userManagementOptions.setVisible(true);
+                dispose();
             }
         });
 
@@ -154,7 +157,7 @@ public class AdminDashboard extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                UserLoginUI.main(null);
+                AuroraCoveLandingPage.main(null);
             }
         });
     }
@@ -163,4 +166,15 @@ public class AdminDashboard extends JFrame {
         AdminDashboard frame = new AdminDashboard("MainAdmin");
         frame.setVisible(true);
     }
+
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
 }

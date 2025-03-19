@@ -1,5 +1,7 @@
 package manager;
 
+import main.AuroraCoveLandingPage;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,10 +12,21 @@ public class DashboardUser extends JPanel {
     private CardLayout cardLayout;
     private static final long serialVersionUID = 1L;
 
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
     public DashboardUser(String email) {
         setBackground(new Color(255, 255, 255));
         setBounds(100, 100, 1240, 800);
         setLayout(null);
+
         
         JPanel navPanel = new JPanel();
         navPanel.setBounds(0, 109, 230, 756);
@@ -105,7 +118,7 @@ public class DashboardUser extends JPanel {
         btnNewButton_1_1_1_1_1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                closeAndOpenNewFrame(() -> UserLoginUI.main(null)); // Wrap UserLoginUI.main in a Runnable
+                closeAndOpenNewFrame(() -> AuroraCoveLandingPage.main(null)); // Wrap UserLoginUI.main in a Runnable
             }
         });
     }
@@ -139,12 +152,12 @@ public class DashboardUser extends JPanel {
         panel_1.setBackground(new Color(255, 222, 173));
         defaultPanel.add(panel_1);
 
-        ImageIcon imageIcon1 = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/image 14.png");
+        ImageIcon imageIcon1 = new ImageIcon("/ImageIcon/image 14.png");
         JLabel lblNewLabel_1 = new JLabel(imageIcon1);
         lblNewLabel_1.setBounds(0, 0, 382, 180);
         panel_1.add(lblNewLabel_1);
 
-        ImageIcon logoIcon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/navbar.png");
+        ImageIcon logoIcon = new ImageIcon("/ImageIcon/navbar.png");
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(0, 20, 300, 76);
         add(logoLabel);
@@ -182,8 +195,8 @@ public class DashboardUser extends JPanel {
         panel_1_1.setBackground(new Color(255, 222, 173));
         panel_1_1.setBounds(60, 237, 920, 180);
         defaultPanel.add(panel_1_1);
-        
-        JLabel lblNewLabel_1_1 = new JLabel(new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/image 15.png"));
+
+        JLabel lblNewLabel_1_1 = new JLabel(new ImageIcon("/ImageIcon/image 15.png"));
         lblNewLabel_1_1.setBounds(0, 0, 382, 170);
         panel_1_1.add(lblNewLabel_1_1);
         
@@ -220,8 +233,8 @@ public class DashboardUser extends JPanel {
         panel_1_1_1.setBackground(new Color(255, 222, 173));
         panel_1_1_1.setBounds(60, 467, 920, 180);
         defaultPanel.add(panel_1_1_1);
-        
-        JLabel lblNewLabel_1_1_1 = new JLabel(new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/image 16.png"));
+
+        JLabel lblNewLabel_1_1_1 = new JLabel(new ImageIcon("/ImageIcon/image 16.png"));
         lblNewLabel_1_1_1.setBounds(0, 0, 382, 180);
         panel_1_1_1.add(lblNewLabel_1_1_1);
         

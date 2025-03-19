@@ -20,6 +20,8 @@ public class AddUser extends JFrame {
     @SuppressWarnings("unused")
 	private UserManagementOptions optionsWindow;
 
+
+
     public AddUser(UserManagementOptions optionsWindow) {
         getContentPane().setBackground(new Color(240, 240, 240));
         this.optionsWindow = optionsWindow;
@@ -27,6 +29,7 @@ public class AddUser extends JFrame {
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
+
 
         JLabel emailLabel = new JLabel("Email:");
         emailLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -125,9 +128,9 @@ public class AddUser extends JFrame {
     }
 
     public void addUserToDatabase(String tableName, String username, String email, String password, String role) {
-        String dbURL = "jdbc:mysql://localhost:3306/hotel";
+        String dbURL = "jdbc:mysql://127.0.0.1:3306/hotel";
         String dbUsername = "root";
-        String dbPassword = "AandromedaNnebula11";
+        String dbPassword = "11211810jr";
 
         try (Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword)) {
             String sql = "INSERT INTO " + tableName + " (username, email, password, role) VALUES (?, ?, ?, ?)";
@@ -151,5 +154,15 @@ public class AddUser extends JFrame {
         AdminDashboard dashboard = new AdminDashboard(null);
         UserManagementOptions optionsWindow = new UserManagementOptions(dashboard);
         optionsWindow.setVisible(true);
+    }
+
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
     }
 }

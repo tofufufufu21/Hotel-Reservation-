@@ -8,6 +8,16 @@ import java.sql.*;
 
 public class CheckOut {
 
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Check Out Guest");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,7 +35,7 @@ public class CheckOut {
         roomIdLabel.setBounds(50, 50, 80, 30);
         contentPanel.add(roomIdLabel);
 
-        ImageIcon logoIcon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/navbar.png");
+        ImageIcon logoIcon = new ImageIcon("/ImageIcon/navbar.png");
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(536, 13, 277, 63);  
         contentPanel.add(logoLabel); 
@@ -85,7 +95,7 @@ public class CheckOut {
             model.setRowCount(0); // Clear previous results
 
             try (Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/hotel", "root", "AandromedaNnebula11")) {
+                    "jdbc:mysql://127.0.0.1:3306/hotel", "root", "11211810jr")) {
 
                 // Query to fetch guest details by GuestID
                 String query = """
@@ -134,7 +144,7 @@ public class CheckOut {
             int guestId = (int) table.getValueAt(selectedRow, 0); // Assuming GuestID is in the first column
 
             try (Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/hotel", "root", "AandromedaNnebula11")) {
+                    "jdbc:mysql://127.0.0.1:3306/hotel", "root", "11211810jr")) {
 
                 conn.setAutoCommit(false); // Start transaction
 

@@ -15,6 +15,16 @@ public class RemoveUser extends JFrame {
     @SuppressWarnings("unused")
 	private UserManagementOptions optionsWindow;
 
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
     public RemoveUser(UserManagementOptions optionsWindow) {
         this.optionsWindow = optionsWindow;
         setTitle("Remove User");
@@ -96,9 +106,9 @@ public class RemoveUser extends JFrame {
     }
 
     public void removeUserFromDatabase(String tableName, String email) {
-        String dbURL = "jdbc:mysql://localhost:3306/hotel";
+        String dbURL = "jdbc:mysql://127.0.0.1:3306/hotel";
         String dbUsername = "root";
-        String dbPassword = "AandromedaNnebula11";
+        String dbPassword = "11211810jr";
 
         try (Connection conn = DriverManager.getConnection(dbURL, dbUsername, dbPassword)) {
             String sql = "DELETE FROM " + tableName + " WHERE email = ?";
