@@ -7,7 +7,17 @@ import java.awt.event.ActionListener;
 
 public class UserManagementOptions extends JFrame {
 
-    private AdminDashboard dashboard;  
+    private AdminDashboard dashboard;
+
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
 
     public UserManagementOptions(AdminDashboard dashboard) {
         this.dashboard = dashboard;  

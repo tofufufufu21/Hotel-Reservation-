@@ -14,6 +14,16 @@ public class UserLoginUI extends JFrame {
     private JPasswordField passwordField;
     private JPanel contentPane;
 
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
     public UserLoginUI() {
         setTitle("Employee Login");
         setSize(900, 600);
@@ -26,7 +36,7 @@ public class UserLoginUI extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/bglog.png");
+                ImageIcon backgroundImage = new ImageIcon(getClass().getResource("/ImageIcon/bglog.png"));
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -64,7 +74,7 @@ public class UserLoginUI extends JFrame {
 
         JButton loginButton = new JButton("");
         loginButton.setBounds(154, 355, 95, 30);
-        ImageIcon arrowIcon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/buton.png");
+        ImageIcon arrowIcon = new ImageIcon(getClass().getResource("/ImageIcon/buton.png"));
         loginButton.setIcon(arrowIcon);
         loginPanel.add(loginButton);
 
@@ -79,7 +89,7 @@ public class UserLoginUI extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon rightSideImage = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/hotel6.png");
+                ImageIcon rightSideImage = new ImageIcon(getClass().getResource("/ImageIcon/hotel6.png"));
                 g.drawImage(rightSideImage.getImage(), 0, 0, getWidth(), getHeight(), this);
             }
         };
@@ -107,9 +117,9 @@ public class UserLoginUI extends JFrame {
     }
 
     private boolean validateEmployeeLogin(String email, String password) {
-        String dbURL = "jdbc:mysql://localhost:3306/hotel";
+        String dbURL = "jdbc:mysql://127.0.0.1:3306/hotel";
         String dbUsername = "root";
-        String dbPassword = "AandromedaNnebula11";
+        String dbPassword = "11211810jr";
 
         String sql = "SELECT password FROM employees WHERE email = ?";
 

@@ -6,6 +6,16 @@ import javax.swing.border.EmptyBorder;
 
 public class TermsConditions extends JPanel {
 
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
     public TermsConditions() {
         setBackground(new Color(30, 144, 255));
 

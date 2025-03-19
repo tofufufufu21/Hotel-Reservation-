@@ -17,7 +17,17 @@
 	import java.awt.event.ActionEvent;
 	
 	public class CheckIn extends JPanel {
-	
+
+		private ImageIcon loadImage(String path) {
+			java.net.URL imgURL = getClass().getResource(path);
+			if (imgURL != null) {
+				return new ImageIcon(imgURL);
+			} else {
+				System.err.println("Error: Couldn't find file: " + path);
+				return new ImageIcon();
+			}
+		}
+
 	    private static final long serialVersionUID = 1L;
 	    private JTextField firstNameField;
 	    private JTextField lastNameField;
@@ -39,8 +49,9 @@
 		public CheckIn() {
 	    	setBackground(new Color(255, 255, 255));
 	        setBounds(100, 100, 1219, 800);
-	        
-	        ImageIcon logoIcon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/navbar.png");
+
+			ImageIcon logoIcon = new ImageIcon(getClass().getResource("/ImageIcon/navbar.png"));
+
 	        setLayout(null);
 	        JLabel logoLabel = new JLabel(logoIcon);
 	        logoLabel.setBounds(0, 0, 300, 68);
@@ -487,9 +498,9 @@
 	            	 Connection conn = null;
 	                 try {
 	                     // Database connection details
-	                     String dbURL = "jdbc:mysql://localhost:3306/hotel";
+	                     String dbURL = "jdbc:mysql://127.0.0.1:3306/hotel";
 	                     String dbUser = "root";
-	                     String dbPassword = "AandromedaNnebula11";
+	                     String dbPassword = "11211810jr";
 
 	                     conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
@@ -590,9 +601,9 @@
                 Connection conn = null;
                 try {
                     // Database connection details
-                    String dbURL = "jdbc:mysql://localhost:3306/hotel";
+                    String dbURL = "jdbc:mysql://127.0.0.1:3306/hotel";
                     String dbUser = "root";
-                    String dbPassword = "AandromedaNnebula11";
+                    String dbPassword = "11211810jr";
 
                     conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 

@@ -17,6 +17,17 @@ import java.awt.Color;
 import javax.swing.JButton;
 
 public class RoomListManager {
+
+    private ImageIcon loadImage(String path) {
+        java.net.URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL);
+        } else {
+            System.err.println("Error: Couldn't find file: " + path);
+            return new ImageIcon();
+        }
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Room Availability - Employee View");
         frame.getContentPane().setBackground(new Color(0, 128, 192));
@@ -36,8 +47,8 @@ public class RoomListManager {
         panel.setBounds(0, 0, 784, 70);
         panel.setLayout(null);  
         frame.getContentPane().add(panel);
-        
-        ImageIcon logoIcon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/navbar.png");
+
+        ImageIcon logoIcon = new ImageIcon(RoomListManager.class.getResource("/ImageIcon/navbar.png"));
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(10, 0, 300, 76);
         panel.add(logoLabel);
@@ -81,7 +92,7 @@ public class RoomListManager {
     private static void loadData(DefaultTableModel tableModel) {
         tableModel.setRowCount(0); 
         try (Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/hotel", "root", "AandromedaNnebula11")) {
+                "jdbc:mysql://127.0.0.1:3306/hotel", "root", "11211810jr")) {
 
             String query = "SELECT r.Id, rt.RoomName, r.CheckIn, r.CheckOut, r.Availability " +
                            "FROM rooms r " +
