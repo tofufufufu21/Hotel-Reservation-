@@ -29,6 +29,7 @@ public class ViewAllUsers extends JFrame {
         setSize(700, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
 
         // Title label
         JLabel titleLabel = new JLabel("ALL USERS", SwingConstants.CENTER);

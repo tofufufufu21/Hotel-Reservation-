@@ -31,6 +31,7 @@ public class RemoveUser extends JFrame {
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
+        setLocationRelativeTo(null);
 
         JLabel emailLabel = new JLabel("Email:");
         emailLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
