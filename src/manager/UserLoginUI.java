@@ -28,6 +28,7 @@ public class UserLoginUI extends JFrame {
         setTitle("Employee Login");
         setSize(900, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         contentPane = new JPanel(new BorderLayout());
         setContentPane(contentPane);

@@ -25,6 +25,7 @@ public class UserManagementOptions extends JFrame {
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
+        setLocationRelativeTo(null);
 
         // Title Label
         JLabel titleLabel = new JLabel("USER MANAGEMENT");
