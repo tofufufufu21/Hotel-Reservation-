@@ -23,7 +23,7 @@ public class TransacHistory {
         JFrame frame = new JFrame("Transaction History");
         frame.getContentPane().setBackground(new Color(0, 102, 204));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1487, 734);
+        frame.setBounds(-10, 0, 1487, 734);
         frame.getContentPane().setLayout(null);
 
         // Header panel
@@ -37,6 +37,7 @@ public class TransacHistory {
         JLabel logoLabel = new JLabel(new ImageIcon(TransacHistory.class.getResource("/ImageIcon/navbar.png")));
         logoLabel.setBounds(10, 10, 300, 56);
         panel.add(logoLabel);
+
 
         JTable table = new JTable(new DefaultTableModel(
                 new Object[]{"Guest ID", "First Name", "Last Name", "Phone Number", "Email Address",
