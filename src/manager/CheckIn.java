@@ -57,7 +57,7 @@
 	        JLabel logoLabel = new JLabel(logoIcon);
 	        logoLabel.setBounds(0, 0, 300, 68);
 	        add(logoLabel);
-	        
+
 	        JPanel reservationMainPanel = new JPanel();
 	        reservationMainPanel.setBounds(0, 70, 1243, 739);
 	        reservationMainPanel.setBackground(new Color(0, 128, 192));
