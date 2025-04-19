@@ -12,11 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
-
+import javax.swing.JOptionPane;
 import main.AuroraCoveLandingPage;
 import main.TransacHistory;
 import manager.UserLoginUI;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 public class AdminDashboard extends JFrame {
 
     private String loggedInUser;
@@ -42,12 +43,31 @@ public class AdminDashboard extends JFrame {
     }
     private void initialize() {
         setTitle("Admin Dashboard");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         setBounds(100, 100, 1243, 720);
         JPanel contentPane = new JPanel();
         contentPane.setLayout(null);
         setContentPane(contentPane);
         setLocationRelativeTo(null);
+
+        // Add window listener for exit confirmation
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        AdminDashboard.this,
+                        "Are you sure you want to exit?",
+                        "Confirm Exit",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    dispose();
+                    // Optional: Add any cleanup code here
+                    System.exit(0); // This will close the entire application
+                }
+            }
+        });
 
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(new Color(3, 91, 150));

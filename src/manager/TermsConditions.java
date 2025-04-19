@@ -3,6 +3,8 @@ package manager;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class TermsConditions extends JPanel {
 
@@ -22,9 +24,9 @@ public class TermsConditions extends JPanel {
         ImageIcon logoIcon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/navbar.png");
         setLayout(null);
         JLabel logoLabel = new JLabel(logoIcon);
-        logoLabel.setBounds(918, 5, 300, 76);  
-        add(logoLabel); 
-        
+        logoLabel.setBounds(918, 5, 300, 76);
+        add(logoLabel);
+
         JLabel lblHeader = new JLabel("TERMS AND CONDITIONS", SwingConstants.LEFT);
         lblHeader.setBackground(new Color(3, 91, 150));
         lblHeader.setBounds(0, 0, 1230, 94);
@@ -51,6 +53,20 @@ public class TermsConditions extends JPanel {
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         add(scrollPane);
+
+        // Back Button
+        JButton balikButton = new JButton("Back");
+        balikButton.setBounds(1050, 30, 150, 40);
+        balikButton.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        balikButton.setBackground(new Color(255, 255, 255));
+        balikButton.setForeground(new Color(30, 144, 255));
+        balikButton.setFocusPainted(false);
+        balikButton.setBorder(BorderFactory.createLineBorder(new Color(30, 144, 255), 2));
+
+        // Sample action
+        balikButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Balik pressed"));
+
+        add(balikButton);
     }
 
     private void createTermsPanel(String title, String description, JPanel parentPanel) {
@@ -83,15 +99,40 @@ public class TermsConditions extends JPanel {
         panel.add(textArea, BorderLayout.CENTER);
 
         parentPanel.add(panel);
-        parentPanel.add(Box.createVerticalStrut(10)); 
+        parentPanel.add(Box.createVerticalStrut(10));
     }
+
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Terms & Conditions");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setSize(1250, 750);
+        // Add window listener for exit confirmation
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        frame,
+                        "Are you sure you want to exit? Any unsaved changes will be lost.",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                    // Optionally return to dashboard
+                    JFrame dashboardFrame = new JFrame("Dashboard User");
+                    dashboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    dashboardFrame.setSize(1240, 866);
+                    DashboardUser dashboardPanel = new DashboardUser("user@example.com");
+                    dashboardFrame.getContentPane().add(dashboardPanel);
+                    dashboardFrame.setVisible(true);
+                }
+            }
+        });
         frame.setContentPane(new TermsConditions());
-        frame.setLocationRelativeTo(null); 
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }

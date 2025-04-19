@@ -13,7 +13,8 @@ import admin.AdminDashboard;
 import manager.GuestList;
 
 import java.sql.*;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 public class GuestList extends JPanel {
 
     private static final long serialVersionUID = 1L;
@@ -139,9 +140,26 @@ public class GuestList extends JPanel {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setContentPane(new GuestList());
         frame.setSize(1500, 600);
+
+        // Add window listener for exit confirmation
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        frame,
+                        "Are you sure you want to exit? Any unsaved data will be lost.",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                }
+            }
+        });
         frame.setVisible(true);
     }
 }

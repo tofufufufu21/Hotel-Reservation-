@@ -15,7 +15,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JButton;
-
+import javax.swing.JOptionPane;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 public class RoomListManager {
 
     private ImageIcon loadImage(String path) {
@@ -31,8 +33,24 @@ public class RoomListManager {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Room Availability - Employee View");
         frame.getContentPane().setBackground(new Color(0, 128, 192));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Changed to DO_NOTHING
         frame.setSize(800, 664);
+        // Add window listener for exit confirmation
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        frame,
+                        "Are you sure you want to exit? Any unsaved data will be lost.",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                }
+            }
+        });
         DefaultTableModel tableModel = new DefaultTableModel();
 
         tableModel.addColumn("ID");
