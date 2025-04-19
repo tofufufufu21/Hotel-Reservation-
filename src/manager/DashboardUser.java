@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 
 public class DashboardUser extends JPanel {
     private JPanel cardPanel;
@@ -27,7 +30,7 @@ public class DashboardUser extends JPanel {
         setBounds(100, 100, 1240, 800);
         setLayout(null);
 
-        
+
         JPanel navPanel = new JPanel();
         navPanel.setBounds(0, 109, 230, 756);
         navPanel.setBackground(new Color(255, 204, 102));
@@ -132,9 +135,27 @@ public class DashboardUser extends JPanel {
 
     public static void main(String[] args) {
         JFrame dashboardFrame = new JFrame("Dashboard User");
-        dashboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        dashboardFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         dashboardFrame.setSize(1240, 866);
         dashboardFrame.setLocationRelativeTo(null);
+
+        // Add window listener for exit confirmation
+        dashboardFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        dashboardFrame,
+                        "Are you sure you want to exit? Any unsaved data will be lost.",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    dashboardFrame.dispose();
+                }
+            }
+        });
+
 
         DashboardUser dashboardUserPanel = new DashboardUser("Employee");
         dashboardFrame.getContentPane().add(dashboardUserPanel);
@@ -152,12 +173,12 @@ public class DashboardUser extends JPanel {
         panel_1.setBackground(new Color(255, 222, 173));
         defaultPanel.add(panel_1);
 
-        ImageIcon imageIcon1 = new ImageIcon("/ImageIcon/image 14.png");
+        ImageIcon imageIcon1 = new ImageIcon(getClass().getResource("/ImageIcon/image 14.png"));
         JLabel lblNewLabel_1 = new JLabel(imageIcon1);
         lblNewLabel_1.setBounds(0, 0, 382, 180);
         panel_1.add(lblNewLabel_1);
 
-        ImageIcon logoIcon = new ImageIcon("/ImageIcon/navbar.png");
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/ImageIcon/navbar.png"));
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(0, 20, 300, 76);
         add(logoLabel);
@@ -196,10 +217,12 @@ public class DashboardUser extends JPanel {
         panel_1_1.setBounds(60, 237, 920, 180);
         defaultPanel.add(panel_1_1);
 
-        JLabel lblNewLabel_1_1 = new JLabel(new ImageIcon("/ImageIcon/image 15.png"));
+        ImageIcon imageIcon15 = new ImageIcon(getClass().getResource("/ImageIcon/image 15.png"));
+        JLabel lblNewLabel_1_1 = new JLabel(imageIcon15);
         lblNewLabel_1_1.setBounds(0, 0, 382, 170);
         panel_1_1.add(lblNewLabel_1_1);
-        
+
+
         JPanel panel_2_1 = new JPanel();
         panel_2_1.setLayout(null);
         panel_2_1.setBackground(new Color(255, 165, 0));

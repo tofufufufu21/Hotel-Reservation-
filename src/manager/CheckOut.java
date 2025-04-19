@@ -5,7 +5,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.*;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 public class CheckOut {
 
     private ImageIcon loadImage(String path) {
@@ -20,9 +21,33 @@ public class CheckOut {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Check Out Guest");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setSize(841, 500);
-        frame.setVisible(true);  
+        // Add window listener for exit confirmation
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        frame,
+                        "Are you sure you want to exit? Any unsaved changes will be lost.",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                    // Optionally return to dashboard
+                    JFrame dashboardFrame = new JFrame("Dashboard User");
+                    dashboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    dashboardFrame.setSize(1240, 866);
+                    DashboardUser dashboardPanel = new DashboardUser("user@example.com");
+                    dashboardFrame.getContentPane().add(dashboardPanel);
+                    dashboardFrame.setVisible(true);
+                }
+            }
+        });
+
+        frame.setVisible(true);
 
         JPanel contentPanel = new JPanel();
         contentPanel.setBackground(new Color(3, 91, 150));
@@ -35,7 +60,7 @@ public class CheckOut {
         roomIdLabel.setBounds(50, 50, 80, 30);
         contentPanel.add(roomIdLabel);
 
-        ImageIcon logoIcon = new ImageIcon("/ImageIcon/navbar.png");
+        ImageIcon logoIcon = new ImageIcon(CheckOut.class.getResource("/ImageIcon/navbar.png"));
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(536, 13, 277, 63);  
         contentPanel.add(logoLabel); 

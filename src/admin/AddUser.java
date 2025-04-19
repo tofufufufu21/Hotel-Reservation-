@@ -1,13 +1,13 @@
 package admin;
 
 import javax.swing.*;
-
 import at.favre.lib.crypto.bcrypt.BCrypt;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 @SuppressWarnings("serial")
 public class AddUser extends JFrame {
@@ -18,20 +18,38 @@ public class AddUser extends JFrame {
     private JRadioButton adminRadioButton;
     private JRadioButton employeeRadioButton;
     @SuppressWarnings("unused")
-	private UserManagementOptions optionsWindow;
-
-
+    private UserManagementOptions optionsWindow;
 
     public AddUser(UserManagementOptions optionsWindow) {
         getContentPane().setBackground(new Color(240, 240, 240));
         this.optionsWindow = optionsWindow;
         setTitle("Add User");
         setSize(600, 400);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(null);
         setLocationRelativeTo(null);
 
+        // Add window listener for exit confirmation
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int response = JOptionPane.showConfirmDialog(
+                        AddUser.this,
+                        "Are you sure you want to exit? Unsaved changes will be lost.",
+                        "Confirm Exit",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
 
+                if (response == JOptionPane.YES_OPTION) {
+                    dispose();
+                    if (optionsWindow != null) {
+                        optionsWindow.setVisible(true);
+                    }
+                }
+            }
+        });
+
+        // REST OF YOUR ORIGINAL CODE BELOW (UNCHANGED)
         JLabel emailLabel = new JLabel("Email:");
         emailLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
         emailLabel.setBounds(66, 97, 80, 25);
@@ -77,12 +95,11 @@ public class AddUser extends JFrame {
         confirmButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                handleConfirm();  // Call method to handle form submission
+                handleConfirm();
             }
         });
         getContentPane().add(confirmButton);
 
-        // Back Button to return to UserManagementOptions
         JButton backButton = new JButton("Back");
         backButton.setForeground(new Color(255, 255, 255));
         backButton.setBackground(new Color(0, 64, 128));
@@ -90,8 +107,8 @@ public class AddUser extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose(); // Close the current window
-                optionsWindow.setVisible(true); // Show the options window
+                dispose();
+                optionsWindow.setVisible(true);
             }
         });
         getContentPane().add(backButton);

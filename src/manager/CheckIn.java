@@ -15,7 +15,8 @@
 	import java.sql.SQLException;
 	import java.text.SimpleDateFormat;
 	import java.awt.event.ActionEvent;
-	
+	import java.awt.event.WindowAdapter;
+	import java.awt.event.WindowEvent;
 	public class CheckIn extends JPanel {
 
 		private ImageIcon loadImage(String path) {
@@ -56,7 +57,7 @@
 	        JLabel logoLabel = new JLabel(logoIcon);
 	        logoLabel.setBounds(0, 0, 300, 68);
 	        add(logoLabel);
-	        
+
 	        JPanel reservationMainPanel = new JPanel();
 	        reservationMainPanel.setBounds(0, 70, 1243, 739);
 	        reservationMainPanel.setBackground(new Color(0, 128, 192));
@@ -716,14 +717,31 @@
 
 
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("DasboardUser");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1219, 840);
+		public static void main(String[] args) {
+			JFrame frame = new JFrame("DashboardUser");
+			frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Changed to DO_NOTHING
+			frame.setSize(1219, 840);
 
-        CheckIn dashboardPanel = new CheckIn();
-        frame.getContentPane().add(dashboardPanel);
+			// Add window listener for exit confirmation
+			frame.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent e) {
+					int confirm = JOptionPane.showConfirmDialog(
+							frame,
+							"Are you sure you want to exit? Any unsaved data will be lost.",
+							"Exit Confirmation",
+							JOptionPane.YES_NO_OPTION,
+							JOptionPane.WARNING_MESSAGE);
 
-        frame.setVisible(true);
-    }
+					if (confirm == JOptionPane.YES_OPTION) {
+						frame.dispose();
+					}
+				}
+			});
+
+			CheckIn dashboardPanel = new CheckIn();
+			frame.getContentPane().add(dashboardPanel);
+
+			frame.setVisible(true);
+		}
         }
