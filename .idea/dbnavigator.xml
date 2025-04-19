@@ -14,6 +14,9 @@
       <assistant-state connection-id="1086bebf-8007-4a2e-9594-da76f3f03790" default-profile-name="" selected-profile-name="" selected-model-name="" assistant-type="GENERIC" selected-action="SHOW_SQL" availability="UNAVAILABLE" acknowledgement="NONE">
         <messages />
       </assistant-state>
+      <assistant-state connection-id="96e42e21-802b-4243-a808-a0639caf7097" default-profile-name="" selected-profile-name="" selected-model-name="" assistant-type="GENERIC" selected-action="SHOW_SQL" availability="UNAVAILABLE" acknowledgement="NONE">
+        <messages />
+      </assistant-state>
     </assistants>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -23,25 +26,39 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="1086bebf-8007-4a2e-9594-da76f3f03790">
-      <console name="HotelReservationDB" type="STANDARD" schema="hotel" session="Main" />
+    <connection id="96e42e21-802b-4243-a808-a0639caf7097">
+      <console name="HotelReservationdb" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="schemas/hotel/tables/admins" />
+      <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="schemas/hotel/tables/rooms" />
+      <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="schemas/hotel/tables/room_types" />
+      <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="consoles/HotelReservationdb" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="1086bebf-8007-4a2e-9594-da76f3f03790" />
+    <connection id="96e42e21-802b-4243-a808-a0639caf7097" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="1086bebf-8007-4a2e-9594-da76f3f03790" dataset="hotel.employees" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="1086bebf-8007-4a2e-9594-da76f3f03790" dataset="hotel.admins" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="96e42e21-802b-4243-a808-a0639caf7097" dataset="hotel.rooms" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="96e42e21-802b-4243-a808-a0639caf7097" dataset="hotel.admins" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="96e42e21-802b-4243-a808-a0639caf7097" dataset="hotel.room_types" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.MethodExecutionManager">
+    <method-browser />
+    <execution-history>
+      <group-entries value="true" />
+      <execution-inputs />
+    </execution-history>
+    <execution-variables-cache />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
@@ -49,9 +66,9 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="1086bebf-8007-4a2e-9594-da76f3f03790" active="true" signed="true">
+      <connection id="96e42e21-802b-4243-a808-a0639caf7097" active="true" signed="true">
         <database>
-          <name value="HotelReservationDB" />
+          <name value="HotelReservationdb" />
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
@@ -60,9 +77,9 @@
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
-          <host value="127.0.0.1" />
+          <host value="localhost" />
           <port value="3306" />
-          <database value="hotel" />
+          <database value="mysql" />
           <tns-folder value="" />
           <tns-profile value="" />
           <type value="USER_PASSWORD" />
