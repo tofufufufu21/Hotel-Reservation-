@@ -66,7 +66,7 @@ public class GuestList extends JPanel {
         panel_1.setBounds(0, 0, 1239, 429);
         panel.add(panel_1);
 
-        ImageIcon logoIcon = new ImageIcon("/ImageIcon/navbar.png");
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/ImageIcon/navbar.png"));
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(10, 14, 300, 76);
         add(logoLabel);
@@ -89,6 +89,8 @@ public class GuestList extends JPanel {
 
         fetchData(guestTable);
     }
+
+
 
     private void fetchData(JTable table) {
         String url = "jdbc:mysql://127.0.0.1:3306/hotel";

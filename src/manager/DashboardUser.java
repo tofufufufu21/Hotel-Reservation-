@@ -27,7 +27,7 @@ public class DashboardUser extends JPanel {
         setBounds(100, 100, 1240, 800);
         setLayout(null);
 
-        
+
         JPanel navPanel = new JPanel();
         navPanel.setBounds(0, 109, 230, 756);
         navPanel.setBackground(new Color(255, 204, 102));
@@ -152,12 +152,12 @@ public class DashboardUser extends JPanel {
         panel_1.setBackground(new Color(255, 222, 173));
         defaultPanel.add(panel_1);
 
-        ImageIcon imageIcon1 = new ImageIcon("/ImageIcon/image 14.png");
+        ImageIcon imageIcon1 = new ImageIcon(getClass().getResource("/ImageIcon/image 14.png"));
         JLabel lblNewLabel_1 = new JLabel(imageIcon1);
         lblNewLabel_1.setBounds(0, 0, 382, 180);
         panel_1.add(lblNewLabel_1);
 
-        ImageIcon logoIcon = new ImageIcon("/ImageIcon/navbar.png");
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/ImageIcon/navbar.png"));
         JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(0, 20, 300, 76);
         add(logoLabel);
@@ -196,10 +196,12 @@ public class DashboardUser extends JPanel {
         panel_1_1.setBounds(60, 237, 920, 180);
         defaultPanel.add(panel_1_1);
 
-        JLabel lblNewLabel_1_1 = new JLabel(new ImageIcon("/ImageIcon/image 15.png"));
+        ImageIcon imageIcon15 = new ImageIcon(getClass().getResource("/ImageIcon/image 15.png"));
+        JLabel lblNewLabel_1_1 = new JLabel(imageIcon15);
         lblNewLabel_1_1.setBounds(0, 0, 382, 170);
         panel_1_1.add(lblNewLabel_1_1);
-        
+
+
         JPanel panel_2_1 = new JPanel();
         panel_2_1.setLayout(null);
         panel_2_1.setBackground(new Color(255, 165, 0));

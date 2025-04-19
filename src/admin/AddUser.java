@@ -22,6 +22,7 @@ public class AddUser extends JFrame {
 
 
 
+
     public AddUser(UserManagementOptions optionsWindow) {
         getContentPane().setBackground(new Color(240, 240, 240));
         this.optionsWindow = optionsWindow;
@@ -30,6 +31,7 @@ public class AddUser extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
         setLocationRelativeTo(null);
+
 
 
         JLabel emailLabel = new JLabel("Email:");
