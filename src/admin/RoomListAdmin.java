@@ -4,7 +4,8 @@ import java.awt.*;
 import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 public class RoomListAdmin {
 
     private static DefaultTableModel tableModel;
@@ -29,10 +30,28 @@ public class RoomListAdmin {
     private static void createAndShowGUI() {
         JFrame frame = new JFrame("Room Availability - Admin View");
         frame.setBackground(new Color(255, 255, 255));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Changed to DO_NOTHING
         frame.setSize(900, 600);
         frame.getContentPane().setLayout(null);
-        
+
+        // Add window listener for exit confirmation
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        frame,
+                        "Are you sure you want to exit? Any unsaved changes will be lost.",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                    AdminDashboard.main(null); // Return to admin dashboard
+                }
+            }
+        });
+
         // Header Panel
         JPanel headerPanel = new JPanel();
         headerPanel.setBackground(new Color(3, 91, 150));

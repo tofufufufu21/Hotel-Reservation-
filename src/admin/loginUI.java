@@ -7,7 +7,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 public class loginUI extends JFrame {
     private JTextField emailField;
     private JPasswordField passwordField;
@@ -26,8 +27,26 @@ public class loginUI extends JFrame {
     public loginUI() {
         setTitle("Admin Login");
         setSize(900, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Changed to DO_NOTHING
         setLocationRelativeTo(null);
+
+        // Add window listener for exit confirmation
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        loginUI.this,
+                        "Are you sure you want to exit the application?",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    dispose();
+                    System.exit(0);
+                }
+            }
+        });
 
         contentPane = new JPanel(new BorderLayout());
         setContentPane(contentPane);

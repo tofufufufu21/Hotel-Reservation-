@@ -5,7 +5,8 @@ import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 public class ViewAllUsers extends JFrame {
     private JPanel adminsPanel;
     private JPanel employeesPanel;
@@ -27,9 +28,26 @@ public class ViewAllUsers extends JFrame {
 
         setTitle("All Users");
         setSize(700, 600);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new BorderLayout());
         setLocationRelativeTo(null);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        ViewAllUsers.this,
+                        "Are you sure you want to return to user management?",
+                        "Confirm Exit",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    dispose();
+                    parentFrame.setVisible(true);
+                }
+            }
+        });
 
         // Title label
         JLabel titleLabel = new JLabel("ALL USERS", SwingConstants.CENTER);

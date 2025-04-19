@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 
 public class DashboardUser extends JPanel {
     private JPanel cardPanel;
@@ -132,9 +135,27 @@ public class DashboardUser extends JPanel {
 
     public static void main(String[] args) {
         JFrame dashboardFrame = new JFrame("Dashboard User");
-        dashboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        dashboardFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         dashboardFrame.setSize(1240, 866);
         dashboardFrame.setLocationRelativeTo(null);
+
+        // Add window listener for exit confirmation
+        dashboardFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        dashboardFrame,
+                        "Are you sure you want to exit? Any unsaved data will be lost.",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    dashboardFrame.dispose();
+                }
+            }
+        });
+
 
         DashboardUser dashboardUserPanel = new DashboardUser("Employee");
         dashboardFrame.getContentPane().add(dashboardUserPanel);

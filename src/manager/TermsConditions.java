@@ -3,6 +3,8 @@ package manager;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class TermsConditions extends JPanel {
 
@@ -104,8 +106,31 @@ public class TermsConditions extends JPanel {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Terms & Conditions");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setSize(1250, 750);
+        // Add window listener for exit confirmation
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        frame,
+                        "Are you sure you want to exit? Any unsaved changes will be lost.",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                    // Optionally return to dashboard
+                    JFrame dashboardFrame = new JFrame("Dashboard User");
+                    dashboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    dashboardFrame.setSize(1240, 866);
+                    DashboardUser dashboardPanel = new DashboardUser("user@example.com");
+                    dashboardFrame.getContentPane().add(dashboardPanel);
+                    dashboardFrame.setVisible(true);
+                }
+            }
+        });
         frame.setContentPane(new TermsConditions());
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);

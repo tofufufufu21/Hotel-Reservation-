@@ -2,6 +2,7 @@ package admin;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.border.LineBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -128,9 +129,27 @@ public class GuestList extends JPanel {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Changed to DO_NOTHING
         frame.setContentPane(new GuestList());
         frame.setSize(1500, 600);
+
+        // Add window listener for exit confirmation
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        frame,
+                        "Are you sure you want to exit?",
+                        "Exit Confirmation",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    frame.dispose();
+                }
+            }
+        });
+
         frame.setVisible(true);
     }
 }

@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 @SuppressWarnings("serial")
 public class RemoveUser extends JFrame {
@@ -29,9 +31,26 @@ public class RemoveUser extends JFrame {
         this.optionsWindow = optionsWindow;
         setTitle("Remove User");
         setSize(600, 400);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(null);
         setLocationRelativeTo(null);
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirm = JOptionPane.showConfirmDialog(
+                        RemoveUser.this,
+                        "Are you sure you want to close this window?",
+                        "Confirm Close",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.WARNING_MESSAGE);
+
+                if (confirm == JOptionPane.YES_OPTION) {
+                    dispose();
+                    optionsWindow.setVisible(true);
+                }
+            }
+        });
 
         JLabel emailLabel = new JLabel("Email:");
         emailLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
