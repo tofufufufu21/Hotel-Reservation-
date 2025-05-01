@@ -36,9 +36,9 @@
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
       <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="schemas/hotel/tables/admins" />
-      <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="schemas/hotel/tables/rooms" />
-      <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="schemas/hotel/tables/room_types" />
       <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="consoles/HotelReservationdb" />
+      <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="schemas/hotel/tables/room_types" />
+      <object connection-id="96e42e21-802b-4243-a808-a0639caf7097" object-ref="schemas/hotel/tables/rooms" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">

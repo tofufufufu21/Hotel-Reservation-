@@ -21,6 +21,8 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
+
+
     </dependencies>  <!-- Missing closing tag added here -->
 
     <build>
@@ -35,4 +37,6 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
+

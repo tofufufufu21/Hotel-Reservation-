@@ -17,6 +17,8 @@
 	import java.awt.event.ActionEvent;
 	import java.awt.event.WindowAdapter;
 	import java.awt.event.WindowEvent;
+	import com.toedter.calendar.JDateChooser;
+
 	public class CheckIn extends JPanel {
 
 		private ImageIcon loadImage(String path) {
@@ -299,7 +301,7 @@
 	        hotelRoomsPanel.add(selectroomPanel2);
 	        
 	        JRadioButton selectRoom2 = new JRadioButton("FamilyCove");
-	        selectRoom2.setActionCommand("FamilyCove");
+			selectRoom2.setActionCommand("Family Cove Suite");
 	        selectRoom2.setForeground(new Color(0, 128, 192));
 	        selectRoom2.setBackground(new Color(0, 128, 192));
 	        selectRoom2.setBounds(10, 15, 109, 23);
@@ -312,8 +314,8 @@
 	        hotelRoomsPanel.add(selectroomPanel3);
 	        
 	        JRadioButton selectRoom3 = new JRadioButton("GrandOceanview");
-	        selectRoom3.setActionCommand("GrandOceanview Suite");
-	        selectRoom3.setForeground(new Color(0, 128, 192));
+			selectRoom3.setActionCommand("Grand Oceanview Suite");
+			selectRoom3.setForeground(new Color(0, 128, 192));
 	        selectRoom3.setBackground(new Color(0, 128, 192));
 	        selectRoom3.setBounds(10, 10, 109, 23);
 	        selectroomPanel3.add(selectRoom3);
@@ -369,47 +371,56 @@
 	        btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 19));
 	        btnNewButton_1.setBounds(404, 301, 142, 70);
 	        hotelRoomsPanel.add(btnNewButton_1);
-	        
-	        JPanel panel = new JPanel();
-	        panel.setBackground(new Color(255, 255, 255));
-	        panel.setBounds(22, 301, 283, 36);
-	        hotelRoomsPanel.add(panel);
-	        panel.setLayout(null);
-	        
-	        textField = new JTextField();
-	        textField.setBounds(115, 0, 168, 36);
-	        panel.add(textField);
-	        textField.setColumns(10);
-	        
-	        JLabel lblNewLabel_1 = new JLabel("Check In Date:");
-	        lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 10));
-	        lblNewLabel_1.setBounds(0, 0, 118, 36);
-	        panel.add(lblNewLabel_1);
-	        
-	        JPanel panel_1 = new JPanel();
-	        panel_1.setLayout(null);
-	        panel_1.setBackground(Color.WHITE);
-	        panel_1.setBounds(22, 348, 283, 36);
-	        hotelRoomsPanel.add(panel_1);
-	        
-	        textField_1 = new JTextField();
-	        textField_1.setColumns(10);
-	        textField_1.setBounds(115, 0, 168, 36);
-	        panel_1.add(textField_1);
-	        
-	        JLabel lblNewLabel_1_1 = new JLabel("Check Out Date:");
-	        lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 10));
-	        lblNewLabel_1_1.setBounds(0, 0, 118, 36);
-	        panel_1.add(lblNewLabel_1_1);
-	        
-	        JPanel panel_1_1_1 = new JPanel();
-	        panel_1_1_1.setLayout(null);
-	        panel_1_1_1.setBorder(new LineBorder(new Color(25, 25, 112), 2));
-	        panel_1_1_1.setBackground(new Color(240, 255, 255));
-	        panel_1_1_1.setBounds(616, 428, 572, 206);
-	        reservationMainPanel.add(panel_1_1_1);
-	        
-	        JLabel lblNewLabel_1_1_1 = new JLabel("PAYMENT");
+
+			// Check-In Panel with Calendar
+			JPanel checkInPanel = new JPanel();
+			checkInPanel.setLayout(null);
+			checkInPanel.setBackground(Color.WHITE);
+			checkInPanel.setBounds(22, 301, 283, 36);
+			hotelRoomsPanel.add(checkInPanel);
+
+			JLabel checkInLabel = new JLabel("Check In Date:");
+			checkInLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
+			checkInLabel.setBounds(0, 0, 118, 36);
+			checkInPanel.add(checkInLabel);
+
+// Use JDateChooser for Check-In Date
+			JDateChooser checkInDateChooser = new JDateChooser();
+			checkInDateChooser.setDateFormatString("MMMM d, yyyy"); // Format to show like "May 1, 2025"
+			checkInDateChooser.setBounds(115, 0, 168, 36);
+			checkInPanel.add(checkInDateChooser);
+
+// Check-Out Panel with Calendar
+			JPanel checkOutPanel = new JPanel();
+			checkOutPanel.setLayout(null);
+			checkOutPanel.setBackground(Color.WHITE);
+			checkOutPanel.setBounds(22, 348, 283, 36);
+			hotelRoomsPanel.add(checkOutPanel);
+
+			JLabel checkOutLabel = new JLabel("Check Out Date:");
+			checkOutLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
+			checkOutLabel.setBounds(0, 0, 118, 36);
+			checkOutPanel.add(checkOutLabel);
+
+// Use JDateChooser for Check-Out Date
+			JDateChooser checkOutDateChooser = new JDateChooser();
+			checkOutDateChooser.setDateFormatString("MMMM d, yyyy"); // Format to show like "May 1, 2025"
+			checkOutDateChooser.setBounds(115, 0, 168, 36);
+			checkOutPanel.add(checkOutDateChooser);
+
+
+			JPanel panel_1_1_1 = new JPanel();
+			panel_1_1_1.setLayout(null);
+			panel_1_1_1.setBorder(new LineBorder(new Color(25, 25, 112), 2));
+			panel_1_1_1.setBackground(new Color(240, 255, 255));
+			panel_1_1_1.setBounds(616, 428, 572, 206);
+			reservationMainPanel.add(panel_1_1_1);
+
+
+
+
+
+			JLabel lblNewLabel_1_1_1 = new JLabel("PAYMENT");
 	        lblNewLabel_1_1_1.setForeground(new Color(25, 25, 112));
 	        lblNewLabel_1_1_1.setFont(new Font("Verdana", Font.BOLD, 20));
 	        lblNewLabel_1_1_1.setBounds(21, 20, 227, 36);
@@ -485,10 +496,7 @@
 	        panel_2_2.add(lblNewLabel_4_1);
 	        
 	        JButton calculateBtn = new JButton("Calculate");
-	        calculateBtn.addActionListener(new ActionListener() {
-	        	public void actionPerformed(ActionEvent e) {
-	        	}
-	        });
+
 	        calculateBtn.setForeground(new Color(25, 25, 112));
 	        calculateBtn.setFont(new Font("Tahoma", Font.PLAIN, 25));
 	        calculateBtn.setBackground(new Color(244, 164, 96));
@@ -506,9 +514,8 @@
 	                     conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
 	                     // Parse dates from input
-	                     SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yy");
-	                     java.util.Date utilCheckInDate = inputFormat.parse(textField.getText().trim());
-	                     java.util.Date utilCheckOutDate = inputFormat.parse(textField_1.getText().trim());
+						 java.util.Date utilCheckInDate = checkInDateChooser.getDate();
+						 java.util.Date utilCheckOutDate = checkOutDateChooser.getDate();
 	                     java.sql.Date sqlCheckInDate = new java.sql.Date(utilCheckInDate.getTime());
 	                     java.sql.Date sqlCheckOutDate = new java.sql.Date(utilCheckOutDate.getTime());
 
