@@ -81,7 +81,7 @@ public class GuestList extends JPanel {
         panel_1.setBounds(0, 0, 1239, 429);
         panel.add(panel_1);
 
-        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/resources/ImageIcon/navbar.png"));        JLabel logoLabel = new JLabel(logoIcon);
+        ImageIcon logoIcon = new ImageIcon(getClass().getResource("/ImageIcon/navbar.png"));        JLabel logoLabel = new JLabel(logoIcon);
         logoLabel.setBounds(10, 14, 300, 76);
         add(logoLabel); 
 

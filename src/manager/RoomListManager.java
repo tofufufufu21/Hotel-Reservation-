@@ -18,7 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-public class RoomListManager {
+public class    RoomListManager {
 
     private ImageIcon loadImage(String path) {
         java.net.URL imgURL = getClass().getResource(path);

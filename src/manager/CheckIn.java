@@ -47,8 +47,10 @@
 	    private JTextField paxCountField = new JTextField();
 	    private JLabel totalLabel; 
 	    private JTextField totalField;
-	
-	    @SuppressWarnings("unchecked")
+
+
+
+		@SuppressWarnings("unchecked")
 		public CheckIn() {
 	    	setBackground(new Color(255, 255, 255));
 	        setBounds(100, 100, 1219, 800);
@@ -386,7 +388,7 @@
 
 // Use JDateChooser for Check-In Date
 			JDateChooser checkInDateChooser = new JDateChooser();
-			checkInDateChooser.setDateFormatString("MMMM d, yyyy"); // Format to show like "May 1, 2025"
+			checkInDateChooser.setDateFormatString("MMMM d, yyyy");
 			checkInDateChooser.setBounds(115, 0, 168, 36);
 			checkInPanel.add(checkInDateChooser);
 
@@ -404,10 +406,9 @@
 
 // Use JDateChooser for Check-Out Date
 			JDateChooser checkOutDateChooser = new JDateChooser();
-			checkOutDateChooser.setDateFormatString("MMMM d, yyyy"); // Format to show like "May 1, 2025"
+			checkOutDateChooser.setDateFormatString("MMMM d, yyyy");
 			checkOutDateChooser.setBounds(115, 0, 168, 36);
 			checkOutPanel.add(checkOutDateChooser);
-
 
 			JPanel panel_1_1_1 = new JPanel();
 			panel_1_1_1.setLayout(null);
@@ -415,9 +416,6 @@
 			panel_1_1_1.setBackground(new Color(240, 255, 255));
 			panel_1_1_1.setBounds(616, 428, 572, 206);
 			reservationMainPanel.add(panel_1_1_1);
-
-
-
 
 
 			JLabel lblNewLabel_1_1_1 = new JLabel("PAYMENT");
@@ -596,8 +594,12 @@
 	        btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 25));
 	        btnNewButton.setBounds(616, 647, 286, 66);
 	        reservationMainPanel.add(btnNewButton);
-	        
-	        JButton btnDone = new JButton("DONE");
+
+
+
+
+
+			JButton btnDone = new JButton("DONE");
 	        btnDone.setForeground(new Color(25, 25, 112));
 	        btnDone.setFont(new Font("Tahoma", Font.PLAIN, 25));
 	        btnDone.setBackground(new Color(244, 164, 96));
@@ -615,10 +617,12 @@
 
                     conn = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
+
+
                     // Parse dates from input
                     SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yy");
-                    java.util.Date utilCheckInDate = inputFormat.parse(textField.getText().trim());
-                    java.util.Date utilCheckOutDate = inputFormat.parse(textField_1.getText().trim());
+					java.util.Date utilCheckInDate = checkInDateChooser.getDate();
+					java.util.Date utilCheckOutDate = checkOutDateChooser.getDate();
                     java.sql.Date sqlCheckInDate = new java.sql.Date(utilCheckInDate.getTime());
                     java.sql.Date sqlCheckOutDate = new java.sql.Date(utilCheckOutDate.getTime());
 
@@ -649,7 +653,7 @@
                     double totalAmount = roomCharge + additionalServiceCost;
 
                     // Database insertion query
-                    
+
                     String insertGuestQuery = "INSERT INTO Guests (FirstName, LastName, PhoneNumber, EmailAddress, Address, City, Nationality, IDNumber, HotelRoom, CheckInDate, CheckOutDate, PaymentMethod, CreditCardNumber, CVV, TotalAmount, LunchPax, DinnerPax, AdditionalServiceCost) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     try (PreparedStatement pstmt = conn.prepareStatement(insertGuestQuery)) {
 
