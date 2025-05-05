@@ -2,7 +2,7 @@ package main;
 
 import javax.swing.*;
 import admin.loginUI;
-import manager.UserLoginUI;
+import manager.UserLoginUI; // Ensure this package's implementation supports the required constructor
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,17 +38,26 @@ public class AuroraCoveLandingPage extends JFrame {
 
         // Admin Button with Image
         JButton adminButton = new JButton(loadImage("/ImageIcon/2.png"));
-        adminButton.setBackground(new Color(3, 91, 150));
+        adminButton.setBackground(new Color(3, 91, 150)); // This sets the blue background
         adminButton.setBounds(61, 108, 256, 281);
         adminButton.setToolTipText("Admin Login");
+        // REMOVED lines that hid the background:
+        // adminButton.setBorderPainted(false);
+        // adminButton.setContentAreaFilled(false);
+        // adminButton.setFocusPainted(false);
         getContentPane().add(adminButton);
 
         // Receptionist Button with Image
         JButton receptionistButton = new JButton(loadImage("/ImageIcon/2.png"));
-        receptionistButton.setBackground(new Color(3, 91, 150));
+        receptionistButton.setBackground(new Color(3, 91, 150)); // This sets the blue background
         receptionistButton.setBounds(407, 108, 256, 281);
         receptionistButton.setToolTipText("Receptionist Login");
+        // REMOVED lines that hid the background:
+        // receptionistButton.setBorderPainted(false);
+        // receptionistButton.setContentAreaFilled(false);
+        // receptionistButton.setFocusPainted(false);
         getContentPane().add(receptionistButton);
+
 
         // Labels for buttons
         JLabel lblAdmin = new JLabel("ADMIN");
@@ -65,8 +74,11 @@ public class AuroraCoveLandingPage extends JFrame {
         adminButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new loginUI().setVisible(true);
-                dispose();
+                // Pass the current AuroraCoveLandingPage instance ('this') to loginUI
+                loginUI adminLogin = new loginUI(AuroraCoveLandingPage.this);
+                adminLogin.setVisible(true);
+                // Hide this landing page
+                AuroraCoveLandingPage.this.setVisible(false);
             }
         });
 
@@ -74,8 +86,12 @@ public class AuroraCoveLandingPage extends JFrame {
         receptionistButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new UserLoginUI().setVisible(true);
-                dispose();
+                // THIS LINE REQUIRES UserLoginUI TO HAVE A CONSTRUCTOR THAT ACCEPTS A JFrame
+                // Make sure you have updated your UserLoginUI class as explained previously
+                UserLoginUI userLogin = new UserLoginUI(AuroraCoveLandingPage.this);
+                userLogin.setVisible(true);
+                // Hide this landing page
+                AuroraCoveLandingPage.this.setVisible(false);
             }
         });
     }
