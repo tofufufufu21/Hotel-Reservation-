@@ -23,6 +23,7 @@ public class CheckOut {
         JFrame frame = new JFrame("Check Out Guest");
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setSize(841, 500);
+        frame.setResizable(false);
         // Add window listener for exit confirmation
         frame.addWindowListener(new WindowAdapter() {
             @Override

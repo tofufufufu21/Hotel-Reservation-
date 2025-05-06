@@ -31,49 +31,50 @@ public class DashboardUser extends JPanel {
         setLayout(null);
 
 
+
         JPanel navPanel = new JPanel();
         navPanel.setBounds(0, 109, 230, 756);
         navPanel.setBackground(new Color(255, 204, 102));
         add(navPanel);
         navPanel.setLayout(null);
-        
+
         // Create the buttons
         JButton btnNewButton = new JButton("CHECK IN");
         btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 19));
         btnNewButton.setBackground(new Color(0, 128, 255));
         btnNewButton.setBounds(12, 49, 186, 50);
         navPanel.add(btnNewButton);
-        
+
         JButton btnNewButton_1 = new JButton("CHECK OUT");
         btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 19));
         btnNewButton_1.setBackground(new Color(0, 128, 255));
         btnNewButton_1.setBounds(12, 153, 186, 50);
         navPanel.add(btnNewButton_1);
-        
+
         JButton btnNewButton_1_1 = new JButton("ROOMS");
         btnNewButton_1_1.setFont(new Font("Tahoma", Font.BOLD, 19));
         btnNewButton_1_1.setBackground(new Color(0, 128, 255));
         btnNewButton_1_1.setBounds(12, 258, 186, 50);
         navPanel.add(btnNewButton_1_1);
-        
+
         JButton btnNewButton_1_1_1 = new JButton("TERMS & CONDITIONS");
         btnNewButton_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 13));
         btnNewButton_1_1_1.setBackground(new Color(0, 128, 255));
         btnNewButton_1_1_1.setBounds(12, 349, 186, 50);
         navPanel.add(btnNewButton_1_1_1);
-        
+
         JButton btnNewButton_1_1_1_1 = new JButton("GUESTS");
         btnNewButton_1_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 19));
         btnNewButton_1_1_1_1.setBackground(new Color(0, 128, 255));
         btnNewButton_1_1_1_1.setBounds(12, 439, 186, 50);
         navPanel.add(btnNewButton_1_1_1_1);
-        
+
         JButton btnNewButton_1_1_1_1_1 = new JButton("LOG OUT");
         btnNewButton_1_1_1_1_1.setFont(new Font("Tw Cen MT", Font.BOLD, 18));
         btnNewButton_1_1_1_1_1.setBackground(new Color(192, 192, 192));
         btnNewButton_1_1_1_1_1.setBounds(12, 539, 186, 75);
         navPanel.add(btnNewButton_1_1_1_1_1);
-        
+
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
         cardPanel.setBounds(227, 109, 1016, 756);
@@ -138,7 +139,7 @@ public class DashboardUser extends JPanel {
         dashboardFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         dashboardFrame.setSize(1240, 866);
         dashboardFrame.setLocationRelativeTo(null);
-
+        dashboardFrame.setResizable(false);
         // Add window listener for exit confirmation
         dashboardFrame.addWindowListener(new WindowAdapter() {
             @Override
@@ -210,7 +211,7 @@ public class DashboardUser extends JPanel {
         txtpnLoremIpsumDolor_2.setBackground(new Color(255, 222, 173));
         txtpnLoremIpsumDolor_2.setBounds(392, 58, 494, 122);
         panel_1.add(txtpnLoremIpsumDolor_2);
-        
+
         JPanel panel_1_1 = new JPanel();
         panel_1_1.setLayout(null);
         panel_1_1.setBackground(new Color(255, 222, 173));
@@ -228,14 +229,14 @@ public class DashboardUser extends JPanel {
         panel_2_1.setBackground(new Color(255, 165, 0));
         panel_2_1.setBounds(696, 0, 224, 55);
         panel_1_1.add(panel_2_1);
-        
+
         JTextPane txtpnnight_1 = new JTextPane();
         txtpnnight_1.setText("₱6,499/night");
         txtpnnight_1.setFont(new Font("Tahoma", Font.BOLD, 24));
         txtpnnight_1.setBackground(new Color(255, 165, 0));
         txtpnnight_1.setBounds(23, 10, 174, 35);
         panel_2_1.add(txtpnnight_1);
-        
+
         JTextPane txtpnGrandOceanviewSuite_2_1 = new JTextPane();
         txtpnGrandOceanviewSuite_2_1.setText("FamilyCove Suite");
         txtpnGrandOceanviewSuite_2_1.setForeground(new Color(0, 0, 139));
@@ -243,37 +244,38 @@ public class DashboardUser extends JPanel {
         txtpnGrandOceanviewSuite_2_1.setBackground(new Color(255, 222, 173));
         txtpnGrandOceanviewSuite_2_1.setBounds(392, 10, 275, 33);
         panel_1_1.add(txtpnGrandOceanviewSuite_2_1);
-        
+
         JTextPane txtpnLoremIpsumDolor_2_1 = new JTextPane();
         txtpnLoremIpsumDolor_2_1.setText("Discover comfort and simplicity in the cozy Seashell Suite, designed for travelers seeking a relaxing and budget-friendly getaway. This suite features a calming coastal theme with elegant interiors, soft ambient lighting, and modern furniture that evokes the tranquil beauty of the seaside. Ideal for solo travelers or couples, the Seashell Suite offers a queen-size bed dressed with premium linens, a spacious bathroom equipped with toiletries, and large windows that invite natural light into the space. Amenities include a flat-screen TV, complimentary high-speed Wi-Fi.");
         txtpnLoremIpsumDolor_2_1.setFont(new Font("Tahoma", Font.BOLD, 12));
         txtpnLoremIpsumDolor_2_1.setBackground(new Color(255, 222, 173));
         txtpnLoremIpsumDolor_2_1.setBounds(392, 58, 494, 122);
         panel_1_1.add(txtpnLoremIpsumDolor_2_1);
-        
+
         JPanel panel_1_1_1 = new JPanel();
         panel_1_1_1.setLayout(null);
         panel_1_1_1.setBackground(new Color(255, 222, 173));
         panel_1_1_1.setBounds(60, 467, 920, 180);
         defaultPanel.add(panel_1_1_1);
 
-        JLabel lblNewLabel_1_1_1 = new JLabel(new ImageIcon("/ImageIcon/image 16.png"));
+        ImageIcon imageIcon16 = loadImage("/ImageIcon/image 16.png");
+        JLabel lblNewLabel_1_1_1 = new JLabel(imageIcon16);
         lblNewLabel_1_1_1.setBounds(0, 0, 382, 180);
         panel_1_1_1.add(lblNewLabel_1_1_1);
-        
+
         JPanel panel_2_1_1 = new JPanel();
         panel_2_1_1.setLayout(null);
         panel_2_1_1.setBackground(new Color(255, 165, 0));
         panel_2_1_1.setBounds(696, 0, 224, 53);
         panel_1_1_1.add(panel_2_1_1);
-        
+
         JTextPane txtpnnight_1_1 = new JTextPane();
         txtpnnight_1_1.setText("₱10,499/night");
         txtpnnight_1_1.setFont(new Font("Tahoma", Font.BOLD, 24));
         txtpnnight_1_1.setBackground(new Color(255, 165, 0));
         txtpnnight_1_1.setBounds(28, 10, 196, 35);
         panel_2_1_1.add(txtpnnight_1_1);
-        
+
         JTextPane txtpnGrandOceanviewSuite_2_1_1 = new JTextPane();
         txtpnGrandOceanviewSuite_2_1_1.setText("Grand Oceanview\tSuite");
         txtpnGrandOceanviewSuite_2_1_1.setForeground(new Color(0, 0, 139));
@@ -281,7 +283,7 @@ public class DashboardUser extends JPanel {
         txtpnGrandOceanviewSuite_2_1_1.setBackground(new Color(255, 222, 173));
         txtpnGrandOceanviewSuite_2_1_1.setBounds(392, 10, 303, 33);
         panel_1_1_1.add(txtpnGrandOceanviewSuite_2_1_1);
-        
+
         JTextPane txtpnLoremIpsumDolor_2_1_1 = new JTextPane();
         txtpnLoremIpsumDolor_2_1_1.setText("Discover comfort and simplicity in the cozy Seashell Suite, designed for travelers seeking a relaxing and budget-friendly getaway. This suite features a calming coastal theme with elegant interiors, soft ambient lighting, and modern furniture that evokes the tranquil beauty of the seaside. Ideal for solo travelers or couples, the Seashell Suite offers a queen-size bed dressed with premium linens, a spacious bathroom equipped with toiletries, and large windows that invite natural light into the space. Amenities include a flat-screen TV, complimentary high-speed Wi-Fi.");
         txtpnLoremIpsumDolor_2_1_1.setFont(new Font("Tahoma", Font.BOLD, 12));

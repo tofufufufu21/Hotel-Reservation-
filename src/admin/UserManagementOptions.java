@@ -27,7 +27,7 @@ public class UserManagementOptions extends JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(null);
         setLocationRelativeTo(null);
-
+        setResizable(false);
         // Add window listener for exit confirmation
         addWindowListener(new WindowAdapter() {
             @Override

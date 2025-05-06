@@ -8,6 +8,7 @@ import java.awt.event.WindowEvent;
 
 public class TermsConditions extends JPanel {
 
+    // Although loadImage is still here, it's not used for the logo anymore
     private ImageIcon loadImage(String path) {
         java.net.URL imgURL = getClass().getResource(path);
         if (imgURL != null) {
@@ -20,16 +21,17 @@ public class TermsConditions extends JPanel {
 
     public TermsConditions() {
         setBackground(new Color(30, 144, 255));
+        setLayout(null); // Keep null layout as other components are positioned absolutely
 
-        ImageIcon logoIcon = new ImageIcon("C:/Users/JC Mendez/Downloads/AuroraCoveHotel/auroraCoveHotel/ImageIcon/navbar.png");
-        setLayout(null);
-        JLabel logoLabel = new JLabel(logoIcon);
-        logoLabel.setBounds(918, 5, 300, 76);
-        add(logoLabel);
+        // Removed the logo loading and adding code:
+        // ImageIcon logoIcon = loadImage("/ImageIcon/navbar.png");
+        // JLabel logoLabel = new JLabel(logoIcon);
+        // logoLabel.setBounds(918, 5, 300, 76);
+        // add(logoLabel);
 
         JLabel lblHeader = new JLabel("TERMS AND CONDITIONS", SwingConstants.LEFT);
         lblHeader.setBackground(new Color(3, 91, 150));
-        lblHeader.setBounds(0, 0, 1230, 94);
+        lblHeader.setBounds(0, 0, 1230, 94); // Adjust width if needed based on header placement
         lblHeader.setForeground(Color.WHITE);
         lblHeader.setFont(new Font("Segoe UI", Font.BOLD, 40));
         lblHeader.setBorder(new EmptyBorder(20, 0, 20, 0));
@@ -49,13 +51,14 @@ public class TermsConditions extends JPanel {
 
         // Scroll Pane for Content
         JScrollPane scrollPane = new JScrollPane(termsContentPanel);
-        scrollPane.setBounds(0, 94, 1230, 618);
+        scrollPane.setBounds(0, 94, 1230, 618); // Ensure scroll pane covers the area below the header
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         add(scrollPane);
 
         // Back Button
         JButton balikButton = new JButton("Back");
+        // You might want to adjust the position of the back button if it was placed relative to the logo's position
         balikButton.setBounds(1050, 30, 150, 40);
         balikButton.setFont(new Font("Segoe UI", Font.PLAIN, 16));
         balikButton.setBackground(new Color(255, 255, 255));
@@ -63,8 +66,42 @@ public class TermsConditions extends JPanel {
         balikButton.setFocusPainted(false);
         balikButton.setBorder(BorderFactory.createLineBorder(new Color(30, 144, 255), 2));
 
-        // Sample action
-        balikButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Balik pressed"));
+        // Action to go back to DashboardUser
+        balikButton.addActionListener(e -> {
+            // Get the parent frame (the frame containing this panel)
+            JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(TermsConditions.this);
+            if (currentFrame != null) {
+                currentFrame.dispose(); // Close the current frame
+
+                // Open the DashboardUser frame on the Event Dispatch Thread
+                SwingUtilities.invokeLater(() -> {
+                    JFrame dashboardFrame = new JFrame("Dashboard User");
+                    // Set close operation for the new dashboard frame
+                    dashboardFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                    // Add window listener for exit confirmation to the dashboard frame
+                    dashboardFrame.addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosing(WindowEvent e) {
+                            int confirm = JOptionPane.showConfirmDialog(
+                                    dashboardFrame,
+                                    "Are you sure you want to exit? Any unsaved data will be lost.",
+                                    "Exit Confirmation",
+                                    JOptionPane.YES_NO_OPTION,
+                                    JOptionPane.WARNING_MESSAGE);
+
+                            if (confirm == JOptionPane.YES_OPTION) {
+                                dashboardFrame.dispose();
+                            }
+                        }
+                    });
+                    dashboardFrame.setSize(1240, 866);
+                    DashboardUser dashboardPanel = new DashboardUser("user@example.com"); // You might want to pass the actual user email here
+                    dashboardFrame.getContentPane().add(dashboardPanel);
+                    dashboardFrame.setLocationRelativeTo(null);
+                    dashboardFrame.setVisible(true);
+                });
+            }
+        });
 
         add(balikButton);
     }
@@ -73,11 +110,13 @@ public class TermsConditions extends JPanel {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createEmptyBorder(10, 10, 10, 10),
-            BorderFactory.createLineBorder(new Color(0, 120, 215), 1, true)
+                BorderFactory.createEmptyBorder(10, 10, 10, 10),
+                BorderFactory.createLineBorder(new Color(0, 120, 215), 1, true)
         ));
         panel.setBackground(Color.WHITE);
-        panel.setMaximumSize(new Dimension(1200, 200));
+        // Use a fixed width but let the height be determined by content
+        panel.setMaximumSize(new Dimension(Short.MAX_VALUE, 200));
+
 
         // Title Label
         JLabel titleLabel = new JLabel(title, SwingConstants.LEFT);
@@ -108,6 +147,7 @@ public class TermsConditions extends JPanel {
         JFrame frame = new JFrame("Terms & Conditions");
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setSize(1250, 750);
+        frame.setResizable(false);
         // Add window listener for exit confirmation
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -121,13 +161,6 @@ public class TermsConditions extends JPanel {
 
                 if (confirm == JOptionPane.YES_OPTION) {
                     frame.dispose();
-                    // Optionally return to dashboard
-                    JFrame dashboardFrame = new JFrame("Dashboard User");
-                    dashboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    dashboardFrame.setSize(1240, 866);
-                    DashboardUser dashboardPanel = new DashboardUser("user@example.com");
-                    dashboardFrame.getContentPane().add(dashboardPanel);
-                    dashboardFrame.setVisible(true);
                 }
             }
         });

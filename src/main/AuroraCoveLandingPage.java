@@ -27,7 +27,7 @@ public class AuroraCoveLandingPage extends JFrame {
         setSize(771, 512);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-
+        setResizable(false);
         // Set layout
         getContentPane().setLayout(null);
 

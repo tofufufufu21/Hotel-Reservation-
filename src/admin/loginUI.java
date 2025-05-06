@@ -27,6 +27,7 @@ public class loginUI extends JFrame {
 
         setTitle("Admin Login");
         setSize(900, 600);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Changed to DO_NOTHING
         setLocationRelativeTo(null);
 

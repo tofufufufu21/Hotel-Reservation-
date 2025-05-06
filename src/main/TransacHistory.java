@@ -25,7 +25,7 @@ public class TransacHistory {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(-10, 0, 1487, 734);
         frame.getContentPane().setLayout(null);
-
+        frame.setResizable(false);
         // Header panel
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 1487, 78);

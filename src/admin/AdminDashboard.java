@@ -45,6 +45,7 @@ public class AdminDashboard extends JFrame {
         setTitle("Admin Dashboard");
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         setBounds(100, 100, 1243, 720);
+        setResizable(false);
         JPanel contentPane = new JPanel();
         contentPane.setLayout(null);
         setContentPane(contentPane);

@@ -31,6 +31,7 @@ public class RemoveUser extends JFrame {
         this.optionsWindow = optionsWindow;
         setTitle("Remove User");
         setSize(600, 400);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(null);
         setLocationRelativeTo(null);

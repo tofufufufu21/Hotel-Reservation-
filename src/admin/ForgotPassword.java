@@ -44,7 +44,7 @@ public class ForgotPassword extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new CardLayout()); // Use CardLayout to switch panels
-
+        setResizable(false);
         // --- Step 1: Email and Role Panel ---
         emailRolePanel = new JPanel();
         emailRolePanel.setLayout(new GridBagLayout());

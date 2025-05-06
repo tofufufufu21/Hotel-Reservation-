@@ -132,7 +132,7 @@ public class GuestList extends JPanel {
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Changed to DO_NOTHING
         frame.setContentPane(new GuestList());
         frame.setSize(1500, 600);
-
+        frame.setResizable(false);
         // Add window listener for exit confirmation
         frame.addWindowListener(new WindowAdapter() {
             @Override

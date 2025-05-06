@@ -29,6 +29,7 @@ public class AddUser extends JFrame {
         setTitle("Add User");
         // Increased height to accommodate new fields
         setSize(600, 500); // Increased height from 400 to 500
+        setResizable(false);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(null);
         setLocationRelativeTo(null);

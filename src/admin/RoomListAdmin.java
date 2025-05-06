@@ -33,7 +33,7 @@ public class RoomListAdmin {
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Changed to DO_NOTHING
         frame.setSize(900, 600);
         frame.getContentPane().setLayout(null);
-
+        frame.setResizable(false);
         // Add window listener for exit confirmation
         frame.addWindowListener(new WindowAdapter() {
             @Override

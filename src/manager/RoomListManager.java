@@ -35,6 +35,7 @@ public class    RoomListManager {
         frame.getContentPane().setBackground(new Color(0, 128, 192));
         frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Changed to DO_NOTHING
         frame.setSize(800, 664);
+        frame.setResizable(false);
         // Add window listener for exit confirmation
         frame.addWindowListener(new WindowAdapter() {
             @Override

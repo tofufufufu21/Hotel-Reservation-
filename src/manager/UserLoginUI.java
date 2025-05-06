@@ -29,7 +29,7 @@ public class UserLoginUI extends JFrame {
         setSize(900, 600);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
-
+        setResizable(false);
         // Add window listener for exit confirmation
         addWindowListener(new WindowAdapter() {
             @Override

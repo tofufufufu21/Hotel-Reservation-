@@ -31,6 +31,7 @@ public class ViewAllUsers extends JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new BorderLayout());
         setLocationRelativeTo(null);
+        setResizable(false);
 
         addWindowListener(new WindowAdapter() {
             @Override
