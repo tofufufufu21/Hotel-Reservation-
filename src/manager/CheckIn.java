@@ -356,17 +356,6 @@ public class CheckIn extends JPanel {
 		otherServicesLabel.setBounds(372, 70, 177, 24);
 		hotelRoomsPanel.add(otherServicesLabel);
 
-		JButton btnNewButton_1 = new JButton("SEARCH"); // This button's action wasn't defined
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO: Implement search functionality if needed
-				JOptionPane.showMessageDialog(null, "Search button clicked - functionality to be implemented.");
-			}
-		});
-		btnNewButton_1.setBackground(new Color(255, 255, 0));
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 19));
-		btnNewButton_1.setBounds(404, 301, 142, 70);
-		hotelRoomsPanel.add(btnNewButton_1);
 
 		JPanel checkInPanel = new JPanel();
 		checkInPanel.setLayout(null);
